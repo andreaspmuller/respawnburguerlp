@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Respawn Burguer's — Lista VIP</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800;900&amp;family=Chakra+Petch:wght@500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap">
+<style>
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+body{margin:0}
+html{scroll-behavior:smooth}
+::selection{background:#c9ff2f;color:#14102a}
+a{color:#c58bff}
+.nl{color:#d9cbe9;text-decoration:none}
+.nl:hover{color:#ffffff}
+input:focus,button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #c9ff2f;outline-offset:3px}
+summary{list-style:none}
+summary::-webkit-details-marker{display:none}
+details[open] .plus{transform:rotate(45deg)}
+.plus{transition:transform .25s ease}
+
+.fd{font-family:'Unbounded','Arial Black',sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:-0.02em}
+.fh{font-family:'Chakra Petch',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.14em}
+.neon{text-shadow:0 0 2px currentColor,0 0 10px currentColor}
+
+.btn{position:relative;overflow:hidden;transition:transform .18s ease,filter .18s ease}
+.btn:hover{transform:translateY(-3px);filter:brightness(1.08)}
+.btn .sh{position:absolute;top:0;bottom:0;left:0;width:38%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);animation:sheen 3.4s ease-in-out infinite;pointer-events:none}
+.frame{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.frame:hover{transform:perspective(1400px) rotateX(1.6deg) rotateY(-2.2deg) translateY(-6px)}
+.card3d{transition:transform .35s ease,border-color .35s ease}
+.card3d:hover{transform:translateY(-8px);border-color:#b04cff}
+
+.hero-photo{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;background:#0a0710}
+.hero-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:10% 28%;transform-origin:30% 45%;animation:kenburns 26s ease-in-out infinite alternate}
+.hp-l{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,rgba(10,7,16,.95) 0%,rgba(10,7,16,.78) 28%,rgba(10,7,16,0) 52%)}
+.hp-b{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(0deg,#0a0710 0%,rgba(10,7,16,.86) 16%,rgba(10,7,16,0) 48%)}
+.hp-t{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(180deg,rgba(10,7,16,.55) 0%,rgba(10,7,16,0) 16%)}
+.hero-wrap{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:88px 24px 56px;min-height:900px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;gap:56px}
+@media (max-width:860px){
+.hero-photo{position:relative;height:460px}
+.hero-photo img{object-position:60% 28%}
+.hp-l{display:none}
+.hp-b{background:linear-gradient(0deg,#0a0710 4%,rgba(10,7,16,0) 60%)}
+.hero-wrap{min-height:0;margin-top:-170px;padding-top:0}
+}
+
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;height:100%;mix-blend-mode:screen;pointer-events:none}
+.glitch::before{color:#ff2fb3;animation:glA 3.6s steps(1) infinite}
+.glitch::after{color:#19e3ff;animation:glB 3.1s steps(1) infinite}
+
+@keyframes glA{0%,86%,100%{transform:translate(0);clip-path:inset(0 0 100% 0)}87%{transform:translate(-6px,0);clip-path:inset(10% 0 64% 0)}90%{transform:translate(5px,0);clip-path:inset(58% 0 14% 0)}93%{transform:translate(-3px,0);clip-path:inset(32% 0 40% 0)}96%{transform:translate(0);clip-path:inset(0 0 100% 0)}}
+@keyframes glB{0%,80%,100%{transform:translate(0);clip-path:inset(0 0 100% 0)}81%{transform:translate(6px,0);clip-path:inset(54% 0 20% 0)}84%{transform:translate(-5px,0);clip-path:inset(6% 0 70% 0)}88%{transform:translate(3px,0);clip-path:inset(40% 0 34% 0)}91%{transform:translate(0);clip-path:inset(0 0 100% 0)}}
+@keyframes spinA{to{--a:360deg}}
+@keyframes orb{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,50px) scale(1.18)}}
+@keyframes flick{0%,18%,22%,25%,53%,57%,100%{opacity:1}20%,24%,55%{opacity:.55}}
+@keyframes marqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes kenburns{from{transform:scale(1.0)}to{transform:scale(1.07) translate(-1%,-0.6%)}}
+@keyframes photoSheen{0%{transform:translateX(-140%) skewX(-18deg)}55%,100%{transform:translateX(420%) skewX(-18deg)}}
+@keyframes sheen{0%{transform:translateX(-160%) skewX(-20deg)}55%,100%{transform:translateX(480%) skewX(-20deg)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,255,47,.6)}70%{box-shadow:0 0 0 12px rgba(201,255,47,0)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes bobY{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+@keyframes revealUp{from{opacity:0;transform:translateY(70px) scale(.97)}to{opacity:1;transform:none}}
+
+@supports (animation-timeline:view()){
+.reveal{animation:revealUp linear both;animation-timeline:view();animation-range:entry 0% entry 42%}
+}
+@media (prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none !important;transition:none !important}
+}
+</style>
+</helmet>
+
+<div style="position:relative;width:100%;box-sizing:border-box;background:#0a0710;color:#f3ecfb;font-family:'Hanken Grotesk',sans-serif;overflow-x:clip">
+
+  <!-- SCANLINES GLOBAIS -->
+  <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:70;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.16) 0px,rgba(0,0,0,.16) 1px,transparent 1px,transparent 3px);mix-blend-mode:multiply"></div>
+
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:60;background:rgba(10,7,16,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(176,76,255,.35)">
+    <div style="max-width:1200px;margin:0 auto;padding:12px 24px;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px">
+      <a href="#topo" style="display:block;line-height:0"><img src="./assets/1fb8d5465a155248c162dbe9370e9895.png" alt="Respawn Burguer's" style="height:52px;width:auto"></a>
+      <nav style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px">
+        <a class="nl fh" href="#menu" style="font-size:13px;min-height:44px;display:inline-flex;align-items:center">Cardápio</a>
+        <a class="nl fh" href="#como" style="font-size:13px;min-height:44px;display:inline-flex;align-items:center">Como funciona</a>
+        <a class="nl fh" href="#faq" style="font-size:13px;min-height:44px;display:inline-flex;align-items:center">Dúvidas</a>
+        <a class="btn fh" href="#lista" style="background:{{cta}};color:#14102a;text-decoration:none;font-size:13px;font-weight:700;padding:0 22px;min-height:44px;box-sizing:border-box;border-radius:8px;display:inline-flex;align-items:center"><span class="sh"></span>Entrar na lista</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="topo" style="position:relative;overflow:clip;background:#0a0710">
+    <div class="hero-photo">
+      <img src="./assets/c43ab821e1ec61f6745f20a6faf03709.jpg" alt="Cliente dando uma mordida em um burger duplo com cheddar e bacon, entre neons e fliperamas da Respawn Burguer's">
+      <div class="hp-l" aria-hidden="true"></div>
+      <div class="hp-t" aria-hidden="true"></div>
+      <div class="hp-b" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero-wrap">
+      <div style="display:flex;flex-direction:column;gap:26px;align-items:flex-start;max-width:560px">
+        <div class="fh" style="display:inline-flex;align-items:center;gap:12px;background:rgba(10,7,16,.6);backdrop-filter:blur(8px);border:1px solid rgba(201,255,47,.5);border-radius:999px;padding:9px 18px 9px 14px;font-size:12px;color:{{cta}}">
+          <span style="width:10px;height:10px;border-radius:50%;background:{{cta}};animation:pulse 1.8s ease-out infinite"></span>
+          Lista VIP aberta // pré-abertura<span style="animation:blink 1s steps(1) infinite">_</span>
+        </div>
+        <h1 class="fd" style="margin:0;font-size:clamp(32px,4.4vw,60px);line-height:1.02;color:#f3ecfb">Fome nível boss?<br><span class="neon" style="color:{{cta}};animation:flick 5s linear infinite"><span class="glitch" data-text="Dá o respawn.">Dá o respawn.</span></span></h1>
+        <p style="margin:0;font-size:20px;line-height:1.6;color:#e6dbf3;max-width:520px">Imagina você aqui: neon, fliperama, burger smash na mão e clima de arena rolando. Entre na lista VIP e garanta seu lugar na abertura.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <span class="fh" style="display:inline-flex;align-items:center;gap:10px;background:rgba(10,7,16,.6);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);border-radius:999px;padding:10px 16px;font-size:12px;color:#f3ecfb"><svg width="12" height="14" viewBox="0 0 10 12" fill="{{cta}}" aria-hidden="true"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg>Cupom de abertura</span>
+          <span class="fh" style="display:inline-flex;align-items:center;gap:10px;background:rgba(10,7,16,.6);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);border-radius:999px;padding:10px 16px;font-size:12px;color:#f3ecfb"><svg width="12" height="14" viewBox="0 0 10 12" fill="{{cta}}" aria-hidden="true"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg>Menu em primeira mão</span>
+          <span class="fh" style="display:inline-flex;align-items:center;gap:10px;background:rgba(10,7,16,.6);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);border-radius:999px;padding:10px 16px;font-size:12px;color:#f3ecfb"><svg width="12" height="14" viewBox="0 0 10 12" fill="{{cta}}" aria-hidden="true"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg>Zero spam</span>
+        </div>
+      </div>
+
+      <!-- BARRA DE CAPTURA -->
+      <div id="lista" style="box-sizing:border-box;padding:3px;border-radius:18px;background:conic-gradient(from var(--a),#9a35e0,#c9ff2f,#ff2fb3,#9a35e0);animation:spinA 6s linear infinite;box-shadow:0 30px 100px rgba(0,0,0,.65)">
+        <div style="box-sizing:border-box;background:rgba(14,9,22,.88);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-radius:15px;padding:28px 30px;display:flex;flex-direction:column;gap:20px">
+
+          <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:22px">
+              <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 40px">
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <span class="fh" style="font-size:12px;color:{{cta}}">Player 1, preparado?</span>
+                  <h2 class="fd" style="margin:0;font-size:clamp(20px,2.2vw,28px);line-height:1.15">Entre na lista VIP</h2>
+                </div>
+                <p style="margin:0;font-size:16px;line-height:1.5;color:#d9cbe9;max-width:440px">Cupom de abertura e cardápio em primeira mão, direto no seu WhatsApp.</p>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end">
+                <label style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:7px">
+                  <span class="fh" style="font-size:11px;color:#c9b8e0">Nome</span>
+                  <input type="text" name="nome" autocomplete="name" required="required" placeholder="Como você joga?" value="{{ name }}" onChange="{{ onName }}" style="width:100%;height:54px;box-sizing:border-box;background:rgba(255,255,255,.05);border:1px solid rgba(176,76,255,.55);border-radius:8px;color:#f3ecfb;font-family:'Hanken Grotesk',sans-serif;font-size:17px;padding:0 16px">
+                </label>
+                <label style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:7px">
+                  <span class="fh" style="font-size:11px;color:#c9b8e0">WhatsApp</span>
+                  <input type="tel" name="whatsapp" autocomplete="tel" required="required" placeholder="(00) 90000-0000" value="{{ phone }}" onChange="{{ onPhone }}" style="width:100%;height:54px;box-sizing:border-box;background:rgba(255,255,255,.05);border:1px solid rgba(176,76,255,.55);border-radius:8px;color:#f3ecfb;font-family:'Hanken Grotesk',sans-serif;font-size:17px;padding:0 16px">
+                </label>
+                <label style="flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:7px">
+                  <span class="fh" style="font-size:11px;color:#c9b8e0">E-mail</span>
+                  <input type="email" name="email" autocomplete="email" required="required" placeholder="voce@email.com" value="{{ email }}" onChange="{{ onEmail }}" style="width:100%;height:54px;box-sizing:border-box;background:rgba(255,255,255,.05);border:1px solid rgba(176,76,255,.55);border-radius:8px;color:#f3ecfb;font-family:'Hanken Grotesk',sans-serif;font-size:17px;padding:0 16px">
+                </label>
+                <button class="btn fd" type="submit" style="flex:1 1 240px;min-height:54px;border:none;border-radius:8px;background:{{cta}};color:#14102a;font-size:14px;letter-spacing:0.01em;cursor:pointer;box-shadow:0 0 30px rgba(201,255,47,.25)"><span class="sh"></span>Quero entrar na lista</button>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 28px">
+                <label style="flex:1 1 420px;display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.45;color:#b9a9cf">
+                  <input type="checkbox" name="consentimento" required="required" style="width:22px;height:22px;margin:0;flex:none;accent-color:#9a35e0">
+                  <span>Concordo em receber avisos da Respawn Burguer's por WhatsApp e e-mail. Posso sair da lista quando quiser.</span>
+                </label>
+                <span style="font-size:14px;color:#b9a9cf">Leva 20 segundos. Sem spam, prometido.</span>
+              </div>
+            </form>
+          </sc-if>
+
+          <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-wrap:wrap;gap:20px 28px;align-items:center;padding:10px 0">
+              <svg width="48" height="41" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="{{cta}}" aria-hidden="true"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg>
+              <div style="display:flex;flex-direction:column;gap:10px;min-width:0;flex:1 1 320px">
+                <span class="fh neon" style="font-size:13px;color:{{cta}}">Player 1 conectado!</span>
+                <h2 class="fd" style="margin:0;font-size:clamp(22px,2.4vw,30px);line-height:1.15">Você está na lista</h2>
+                <p style="margin:0;font-size:17px;line-height:1.5;color:#d9cbe9">Fique de olho no WhatsApp e no e-mail: a gente avisa primeiro você quando abrir e libera o seu cupom.</p>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAIXAS CRUZADAS -->
+  <div aria-hidden="true" style="position:relative;height:230px;overflow:clip;margin-top:-40px;z-index:5">
+    <div style="position:absolute;left:-6%;width:112%;top:64px;transform:rotate(1.8deg);background:#9a35e0;color:#ffffff;overflow:hidden;box-shadow:0 0 50px rgba(154,53,224,.6)">
+      <div class="fd" style="display:inline-flex;align-items:center;white-space:nowrap;font-size:26px;padding:16px 0;animation:marqR 34s linear infinite">
+        <span style="display:inline-flex;align-items:center;gap:36px;padding-right:36px">COMBOS COM NOME DE FASE <svg width="22" height="19" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg> SEM LAG, SÓ FOME <svg width="22" height="19" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg> CLIMA DE ARENA <svg width="22" height="19" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg></span>
+        <span style="display:inline-flex;align-items:center;gap:36px;padding-right:36px">COMBOS COM NOME DE FASE <svg width="22" height="19" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg> SEM LAG, SÓ FOME <svg width="22" height="19" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg> CLIMA DE ARENA <svg width="22" height="19" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg></span>
+        <span style="display:inline-flex;align-items:center;gap:36px;padding-right:36px">COMBOS COM NOME DE FASE <svg width="22" height="19" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg> SEM LAG, SÓ FOME <svg width="22" height="19" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg> CLIMA DE ARENA <svg width="22" height="19" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg></span>
+        <span style="display:inline-flex;align-items:center;gap:36px;padding-right:36px">COMBOS COM NOME DE FASE <svg width="22" height="19" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg> SEM LAG, SÓ FOME <svg width="22" height="19" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg> CLIMA DE ARENA <svg width="22" height="19" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="currentColor"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg></span>
+      </div>
+    </div>
+    <div style="position:absolute;left:-6%;width:112%;top:64px;transform:rotate(-2.2deg);background:{{cta}};color:#14102a;overflow:hidden;box-shadow:0 0 50px rgba(201,255,47,.35)">
+      <div class="fd" style="display:inline-flex;align-items:center;white-space:nowrap;font-size:26px;padding:16px 0;animation:marqL 30s linear infinite">
+        <span style="display:inline-flex;align-items:center;gap:36px;padding-right:36px">PRESS START <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg> BURGERS ARTESANAIS <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg> LVL UP <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg> RESPAWN <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg></span>
+        <span style="display:inline-flex;align-items:center;gap:36px;padding-right:36px">PRESS START <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg> BURGERS ARTESANAIS <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg> LVL UP <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg> RESPAWN <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg></span>
+        <span style="display:inline-flex;align-items:center;gap:36px;padding-right:36px">PRESS START <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg> BURGERS ARTESANAIS <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg> LVL UP <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg> RESPAWN <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg></span>
+        <span style="display:inline-flex;align-items:center;gap:36px;padding-right:36px">PRESS START <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg> BURGERS ARTESANAIS <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg> LVL UP <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg> RESPAWN <svg width="20" height="23" viewBox="0 0 10 12" fill="currentColor"><path d="M6 0L1 7h3L3 12l6-8H5.5z"></path></svg></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO DO MENU -->
+  <section id="menu" style="position:relative;max-width:1200px;margin:0 auto;padding:80px 24px 70px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+    <span class="fh reveal" style="font-size:13px;color:{{cta}}">// Menu — selecione sua fase</span>
+    <h2 class="fd reveal" style="margin:0;font-size:clamp(34px,5.6vw,80px);line-height:.98;max-width:900px">Escolha sua <span class="neon" style="color:#b04cff">fase</span></h2>
+    <p class="reveal" style="margin:0;font-size:20px;line-height:1.6;color:#d9cbe9;max-width:620px">Três níveis de fome, três formas de zerar o jogo. Receitas e nomes finais chegam primeiro pra quem está na lista.</p>
+  </section>
+
+  <!-- LVL 1 — TUTORIAL -->
+  <section id="lvl1" style="position:relative;padding:20px 0 120px;overflow:clip">
+    <div aria-hidden="true" class="fd" style="position:absolute;top:-20px;right:-30px;font-size:clamp(180px,30vw,440px);line-height:.8;color:transparent;-webkit-text-stroke:2px rgba(176,76,255,.24);pointer-events:none;user-select:none">01</div>
+    <div aria-hidden="true" style="position:absolute;left:4%;top:220px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(176,76,255,.3),transparent 65%);filter:blur(40px);pointer-events:none;animation:orb 17s ease-in-out infinite"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box;display:flex;flex-direction:column;gap:40px">
+      <div class="reveal" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+        <span class="fh" style="display:inline-flex;align-items:center;gap:12px;font-size:13px;color:#b04cff;border:1px solid rgba(176,76,255,.6);padding:9px 16px;border-radius:999px;background:rgba(176,76,255,.12)">LVL 1 <span style="opacity:.6">// Fase 01</span></span>
+        <span class="fh" style="font-size:12px;color:#b9a9cf">Zona de início</span>
+      </div>
+      <figure class="reveal frame" style="margin:0;position:relative;border-radius:14px;overflow:hidden;background:#000;line-height:0;box-shadow:0 0 0 2px #b04cff,0 0 70px rgba(176,76,255,.55),0 50px 120px rgba(0,0,0,.7)">
+        <img src="./assets/852837c443f49b58a89371062cf39c25.jpg" alt="Burger Tutorial: pão brioche marcado com o mascote, duas carnes smash, cheddar derretido e cebola roxa, com batata no copinho da casa" style="display:block;width:100%;height:auto;transform-origin:50% 60%;animation:kenburns 20s ease-in-out infinite alternate">
+        <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0px,rgba(0,0,0,.2) 1px,transparent 1px,transparent 3px);box-shadow:inset 0 0 140px rgba(0,0,0,.5);mix-blend-mode:multiply;pointer-events:none"></div>
+        <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:34%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.17),transparent);animation:photoSheen 7s ease-in-out infinite;pointer-events:none"></div>
+        <span aria-hidden="true" style="position:absolute;top:16px;left:16px;width:30px;height:30px;border-top:3px solid #b04cff;border-left:3px solid #b04cff"></span>
+        <span aria-hidden="true" style="position:absolute;top:16px;right:16px;width:30px;height:30px;border-top:3px solid #b04cff;border-right:3px solid #b04cff"></span>
+        <span aria-hidden="true" style="position:absolute;bottom:16px;left:16px;width:30px;height:30px;border-bottom:3px solid #b04cff;border-left:3px solid #b04cff"></span>
+        <span aria-hidden="true" style="position:absolute;bottom:16px;right:16px;width:30px;height:30px;border-bottom:3px solid #b04cff;border-right:3px solid #b04cff"></span>
+      </figure>
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:40px 72px;align-items:flex-end;justify-content:space-between">
+        <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:16px">
+          <span class="fh" style="font-size:13px;color:#b9a9cf">O clássico pra começar sem erro</span>
+          <h3 class="fd neon" style="margin:0;font-size:clamp(40px,6.4vw,92px);line-height:.94;color:#b04cff">Tutorial</h3>
+        </div>
+        <div style="flex:0 1 480px;min-width:0;display:flex;flex-direction:column;gap:24px">
+          <p style="margin:0;font-size:18px;line-height:1.6;color:#d9cbe9">Pão brioche com o mascote marcado a fogo, duas carnes smash, cheddar derretido e cebola roxa picada. Acompanha batata crocante no copinho da casa. Simples, direto, viciante.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:20px 36px;align-items:center">
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <span class="fh" style="font-size:11px;color:#b9a9cf">Dano de fome</span>
+              <div style="display:flex;gap:6px">
+                <span style="width:26px;height:14px;transform:skewX(-18deg);background:#b04cff;box-shadow:0 0 14px #b04cff"></span><span style="width:26px;height:14px;transform:skewX(-18deg);background:#b04cff;box-shadow:0 0 14px #b04cff"></span><span style="width:26px;height:14px;transform:skewX(-18deg);background:rgba(255,255,255,.1)"></span><span style="width:26px;height:14px;transform:skewX(-18deg);background:rgba(255,255,255,.1)"></span><span style="width:26px;height:14px;transform:skewX(-18deg);background:rgba(255,255,255,.1)"></span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <span class="fh" style="font-size:11px;color:#b9a9cf">Dificuldade</span>
+              <span class="fh" style="font-size:13px;color:#b04cff">Fácil</span>
+            </div>
+          </div>
+          <a class="btn fd" href="#lista" style="align-self:flex-start;background:{{cta}};color:#14102a;text-decoration:none;font-size:14px;padding:0 30px;min-height:56px;box-sizing:border-box;border-radius:8px;display:inline-flex;align-items:center;box-shadow:0 0 34px rgba(201,255,47,.3)"><span class="sh"></span>Quero esse na abertura</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LVL 2 — SPEEDRUN -->
+  <section id="lvl2" style="position:relative;padding:20px 0 120px;overflow:clip">
+    <div aria-hidden="true" class="fd" style="position:absolute;top:-20px;left:-30px;font-size:clamp(180px,30vw,440px);line-height:.8;color:transparent;-webkit-text-stroke:2px rgba(255,63,184,.24);pointer-events:none;user-select:none">02</div>
+    <div aria-hidden="true" style="position:absolute;right:2%;top:220px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(255,63,184,.26),transparent 65%);filter:blur(40px);pointer-events:none;animation:orb 21s ease-in-out infinite"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box;display:flex;flex-direction:column;gap:40px">
+      <div class="reveal" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+        <span class="fh" style="font-size:12px;color:#b9a9cf">Zona de velocidade</span>
+        <span class="fh" style="display:inline-flex;align-items:center;gap:12px;font-size:13px;color:#ff3fb8;border:1px solid rgba(255,63,184,.6);padding:9px 16px;border-radius:999px;background:rgba(255,63,184,.12)">LVL 2 <span style="opacity:.6">// Fase 02</span></span>
+      </div>
+      <figure class="reveal frame" style="margin:0;position:relative;border-radius:14px;overflow:hidden;background:#000;line-height:0;box-shadow:0 0 0 2px #ff3fb8,0 0 70px rgba(255,63,184,.5),0 50px 120px rgba(0,0,0,.7)">
+        <img src="./assets/b3a6c12e4e92be104522c05a58a6e588.jpg" alt="Combo Speedrun: burger duplo com bacon e cheddar, batata, bebida e uma porção de batata com cheddar e bacon" style="display:block;width:100%;height:auto;transform-origin:50% 60%;animation:kenburns 22s ease-in-out infinite alternate-reverse">
+        <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0px,rgba(0,0,0,.2) 1px,transparent 1px,transparent 3px);box-shadow:inset 0 0 140px rgba(0,0,0,.5);mix-blend-mode:multiply;pointer-events:none"></div>
+        <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:34%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.17),transparent);animation:photoSheen 7s ease-in-out infinite 2s;pointer-events:none"></div>
+        <span aria-hidden="true" style="position:absolute;top:16px;left:16px;width:30px;height:30px;border-top:3px solid #ff3fb8;border-left:3px solid #ff3fb8"></span>
+        <span aria-hidden="true" style="position:absolute;top:16px;right:16px;width:30px;height:30px;border-top:3px solid #ff3fb8;border-right:3px solid #ff3fb8"></span>
+        <span aria-hidden="true" style="position:absolute;bottom:16px;left:16px;width:30px;height:30px;border-bottom:3px solid #ff3fb8;border-left:3px solid #ff3fb8"></span>
+        <span aria-hidden="true" style="position:absolute;bottom:16px;right:16px;width:30px;height:30px;border-bottom:3px solid #ff3fb8;border-right:3px solid #ff3fb8"></span>
+      </figure>
+      <div class="reveal" style="display:flex;flex-wrap:wrap-reverse;gap:40px 72px;align-items:flex-end;justify-content:space-between">
+        <div style="flex:0 1 480px;min-width:0;display:flex;flex-direction:column;gap:24px">
+          <p style="margin:0;font-size:18px;line-height:1.6;color:#d9cbe9">Burger duplo com bacon crocante e cheddar, batata e bebida no copo da casa, mais uma porção de batata com cheddar e bacon por cima. Tudo pronto pra devorar em tempo recorde.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:20px 36px;align-items:center">
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <span class="fh" style="font-size:11px;color:#b9a9cf">Dano de fome</span>
+              <div style="display:flex;gap:6px">
+                <span style="width:26px;height:14px;transform:skewX(-18deg);background:#ff3fb8;box-shadow:0 0 14px #ff3fb8"></span><span style="width:26px;height:14px;transform:skewX(-18deg);background:#ff3fb8;box-shadow:0 0 14px #ff3fb8"></span><span style="width:26px;height:14px;transform:skewX(-18deg);background:#ff3fb8;box-shadow:0 0 14px #ff3fb8"></span><span style="width:26px;height:14px;transform:skewX(-18deg);background:rgba(255,255,255,.1)"></span><span style="width:26px;height:14px;transform:skewX(-18deg);background:rgba(255,255,255,.1)"></span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <span class="fh" style="font-size:11px;color:#b9a9cf">Dificuldade</span>
+              <span class="fh" style="font-size:13px;color:#ff3fb8">Normal</span>
+            </div>
+          </div>
+          <a class="btn fd" href="#lista" style="align-self:flex-start;background:{{cta}};color:#14102a;text-decoration:none;font-size:14px;padding:0 30px;min-height:56px;box-sizing:border-box;border-radius:8px;display:inline-flex;align-items:center;box-shadow:0 0 34px rgba(201,255,47,.3)"><span class="sh"></span>Quero esse na abertura</a>
+        </div>
+        <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:16px;align-items:flex-end;text-align:right">
+          <span class="fh" style="font-size:13px;color:#b9a9cf">Combo pra quem tem pressa e muita fome</span>
+          <h3 class="fd neon" style="margin:0;font-size:clamp(40px,6.4vw,92px);line-height:.94;color:#ff3fb8">Speedrun</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LVL 3 — BOSS FIGHT -->
+  <section id="lvl3" style="position:relative;padding:20px 0 120px;overflow:clip">
+    <div aria-hidden="true" class="fd" style="position:absolute;top:-20px;right:-30px;font-size:clamp(180px,30vw,440px);line-height:.8;color:transparent;-webkit-text-stroke:2px rgba(201,255,47,.2);pointer-events:none;user-select:none">03</div>
+    <div aria-hidden="true" style="position:absolute;left:4%;top:220px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(154,53,224,.38),transparent 65%);filter:blur(40px);pointer-events:none;animation:orb 18s ease-in-out infinite"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box;display:flex;flex-direction:column;gap:40px">
+      <div class="reveal" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
+        <span class="fh" style="display:inline-flex;align-items:center;gap:12px;font-size:13px;color:{{cta}};border:1px solid rgba(201,255,47,.6);padding:9px 16px;border-radius:999px;background:rgba(201,255,47,.1)">LVL 3 <span style="opacity:.6">// Fase 03</span></span>
+        <span class="fh" style="font-size:12px;color:#b9a9cf">Zona do chefão</span>
+      </div>
+      <figure class="reveal frame" style="margin:0;position:relative;border-radius:14px;overflow:hidden;background:#000;line-height:0;box-shadow:0 0 0 2px {{cta}},0 0 70px rgba(201,255,47,.35),0 50px 120px rgba(0,0,0,.7)">
+        <img src="./assets/adfbadda1942ca6446954593ea7ceda8.jpg" alt="Boss Fight: dois burgers com carne smash dupla, cheddar, bacon crocante, cebola roxa e alface, com batata e bebida" style="display:block;width:100%;height:auto;transform-origin:50% 60%;animation:kenburns 21s ease-in-out infinite alternate">
+        <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0px,rgba(0,0,0,.2) 1px,transparent 1px,transparent 3px);box-shadow:inset 0 0 140px rgba(0,0,0,.5);mix-blend-mode:multiply;pointer-events:none"></div>
+        <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:34%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.17),transparent);animation:photoSheen 7s ease-in-out infinite 4s;pointer-events:none"></div>
+        <span aria-hidden="true" style="position:absolute;top:16px;left:16px;width:30px;height:30px;border-top:3px solid {{cta}};border-left:3px solid {{cta}}"></span>
+        <span aria-hidden="true" style="position:absolute;top:16px;right:16px;width:30px;height:30px;border-top:3px solid {{cta}};border-right:3px solid {{cta}}"></span>
+        <span aria-hidden="true" style="position:absolute;bottom:16px;left:16px;width:30px;height:30px;border-bottom:3px solid {{cta}};border-left:3px solid {{cta}}"></span>
+        <span aria-hidden="true" style="position:absolute;bottom:16px;right:16px;width:30px;height:30px;border-bottom:3px solid {{cta}};border-right:3px solid {{cta}}"></span>
+      </figure>
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:40px 72px;align-items:flex-end;justify-content:space-between">
+        <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:16px">
+          <span class="fh" style="font-size:13px;color:#b9a9cf">Pra quem veio zerar o jogo</span>
+          <h3 class="fd neon" style="margin:0;font-size:clamp(40px,6.4vw,92px);line-height:.94;color:{{cta}}">Boss Fight</h3>
+        </div>
+        <div style="flex:0 1 480px;min-width:0;display:flex;flex-direction:column;gap:24px">
+          <p style="margin:0;font-size:18px;line-height:1.6;color:#d9cbe9">Carne smash em dobro, cheddar derretido, bacon crocante, cebola roxa e alface fresca, com batata e bebida pra fechar a luta. Prepare o guardanapo.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:20px 36px;align-items:center">
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <span class="fh" style="font-size:11px;color:#b9a9cf">Dano de fome</span>
+              <div style="display:flex;gap:6px">
+                <span style="width:26px;height:14px;transform:skewX(-18deg);background:{{cta}};box-shadow:0 0 14px {{cta}}"></span><span style="width:26px;height:14px;transform:skewX(-18deg);background:{{cta}};box-shadow:0 0 14px {{cta}}"></span><span style="width:26px;height:14px;transform:skewX(-18deg);background:{{cta}};box-shadow:0 0 14px {{cta}}"></span><span style="width:26px;height:14px;transform:skewX(-18deg);background:{{cta}};box-shadow:0 0 14px {{cta}}"></span><span style="width:26px;height:14px;transform:skewX(-18deg);background:{{cta}};box-shadow:0 0 14px {{cta}}"></span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <span class="fh" style="font-size:11px;color:#b9a9cf">Dificuldade</span>
+              <span class="fh" style="font-size:13px;color:{{cta}}">Hard</span>
+            </div>
+          </div>
+          <a class="btn fd" href="#lista" style="align-self:flex-start;background:{{cta}};color:#14102a;text-decoration:none;font-size:14px;padding:0 30px;min-height:56px;box-sizing:border-box;border-radius:8px;display:inline-flex;align-items:center;box-shadow:0 0 34px rgba(201,255,47,.3)"><span class="sh"></span>Quero esse na abertura</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FASE ??? -->
+  <section style="max-width:1200px;margin:0 auto;padding:0 24px 120px;box-sizing:border-box">
+    <div class="reveal" style="position:relative;overflow:hidden;box-sizing:border-box;border:2px dashed rgba(176,76,255,.7);border-radius:14px;background:rgba(176,76,255,.07);padding:48px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px 48px">
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:0;flex:1 1 400px">
+        <span class="fh" style="font-size:13px;color:{{cta}}">Fase ??? // bloqueada</span>
+        <h3 class="fd" style="margin:0;font-size:clamp(28px,4vw,52px);line-height:1">Easter Egg</h3>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#d9cbe9;max-width:560px">Existe um item secreto no cardápio. Só quem está na lista descobre primeiro.</p>
+      </div>
+      <a class="btn fd" href="#lista" style="background:{{cta}};color:#14102a;text-decoration:none;font-size:14px;padding:0 30px;min-height:56px;box-sizing:border-box;border-radius:8px;display:inline-flex;align-items:center"><span class="sh"></span>Desbloquear agora</a>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="como" style="position:relative;max-width:1200px;margin:0 auto;padding:40px 24px 120px;box-sizing:border-box;display:flex;flex-direction:column;gap:56px">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:760px">
+      <span class="fh reveal" style="font-size:13px;color:{{cta}}">// Como funciona</span>
+      <h2 class="fd reveal" style="margin:0;font-size:clamp(32px,4.8vw,64px);line-height:1">Três passos pra desbloquear o loot</h2>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:24px">
+      <div class="card3d reveal" style="position:relative;overflow:hidden;flex:1 1 300px;min-width:0;box-sizing:border-box;background:#110b1a;border:1px solid rgba(176,76,255,.4);border-radius:14px;padding:36px 32px 40px;display:flex;flex-direction:column;gap:16px">
+        <span aria-hidden="true" class="fd" style="position:absolute;top:-10px;right:14px;font-size:150px;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(176,76,255,.35)">01</span>
+        <span class="fh" style="position:relative;font-size:12px;color:{{cta}}">Passo 01</span>
+        <h3 class="fd" style="position:relative;margin:70px 0 0;font-size:24px;line-height:1.1">Entre na lista</h3>
+        <p style="position:relative;margin:0;font-size:17px;line-height:1.6;color:#d9cbe9">Preencha nome, WhatsApp e e-mail. Leva menos de um minuto.</p>
+      </div>
+      <div class="card3d reveal" style="position:relative;overflow:hidden;flex:1 1 300px;min-width:0;box-sizing:border-box;background:#110b1a;border:1px solid rgba(176,76,255,.4);border-radius:14px;padding:36px 32px 40px;display:flex;flex-direction:column;gap:16px">
+        <span aria-hidden="true" class="fd" style="position:absolute;top:-10px;right:14px;font-size:150px;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(176,76,255,.35)">02</span>
+        <span class="fh" style="position:relative;font-size:12px;color:{{cta}}">Passo 02</span>
+        <h3 class="fd" style="position:relative;margin:70px 0 0;font-size:24px;line-height:1.1">Receba o aviso</h3>
+        <p style="position:relative;margin:0;font-size:17px;line-height:1.6;color:#d9cbe9">Você descobre a data de abertura e vê o cardápio antes de todo mundo.</p>
+      </div>
+      <div class="card3d reveal" style="position:relative;overflow:hidden;flex:1 1 300px;min-width:0;box-sizing:border-box;background:#110b1a;border:1px solid rgba(176,76,255,.4);border-radius:14px;padding:36px 32px 40px;display:flex;flex-direction:column;gap:16px">
+        <span aria-hidden="true" class="fd" style="position:absolute;top:-10px;right:14px;font-size:150px;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(176,76,255,.35)">03</span>
+        <span class="fh" style="position:relative;font-size:12px;color:{{cta}}">Passo 03</span>
+        <h3 class="fd" style="position:relative;margin:70px 0 0;font-size:24px;line-height:1.1">Resgate o cupom</h3>
+        <p style="position:relative;margin:0;font-size:17px;line-height:1.6;color:#d9cbe9">Mostre o cupom na abertura e comece sua primeira fase com vantagem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="max-width:860px;margin:0 auto;padding:0 24px 120px;box-sizing:border-box;display:flex;flex-direction:column;gap:44px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span class="fh reveal" style="font-size:13px;color:{{cta}}">// FAQ</span>
+      <h2 class="fd reveal" style="margin:0;font-size:clamp(32px,4.8vw,64px);line-height:1">Dúvidas rápidas</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <details class="reveal" style="background:#110b1a;border:1px solid rgba(176,76,255,.4);border-radius:12px">
+        <summary style="cursor:pointer;padding:20px 26px;min-height:44px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:16px;font-weight:700;font-size:19px"><span>Quando a Respawn Burguer's abre?</span><span class="plus fd" style="font-size:22px;color:{{cta}}">+</span></summary>
+        <div style="padding:0 26px 24px;color:#d9cbe9;font-size:17px;line-height:1.6">[DATA DE ABERTURA]. Quem está na lista recebe o aviso primeiro.</div>
+      </details>
+      <details class="reveal" style="background:#110b1a;border:1px solid rgba(176,76,255,.4);border-radius:12px">
+        <summary style="cursor:pointer;padding:20px 26px;min-height:44px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:16px;font-weight:700;font-size:19px"><span>Entrar na lista custa alguma coisa?</span><span class="plus fd" style="font-size:22px;color:{{cta}}">+</span></summary>
+        <div style="padding:0 26px 24px;color:#d9cbe9;font-size:17px;line-height:1.6">Nada. É só preencher o formulário e pronto: você já está dentro.</div>
+      </details>
+      <details class="reveal" style="background:#110b1a;border:1px solid rgba(176,76,255,.4);border-radius:12px">
+        <summary style="cursor:pointer;padding:20px 26px;min-height:44px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:16px;font-weight:700;font-size:19px"><span>Vou receber muita mensagem?</span><span class="plus fd" style="font-size:22px;color:{{cta}}">+</span></summary>
+        <div style="padding:0 26px 24px;color:#d9cbe9;font-size:17px;line-height:1.6">Só o que importa: abertura, cupom e novidades do cardápio. Dá pra sair da lista quando quiser.</div>
+      </details>
+      <details class="reveal" style="background:#110b1a;border:1px solid rgba(176,76,255,.4);border-radius:12px">
+        <summary style="cursor:pointer;padding:20px 26px;min-height:44px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:16px;font-weight:700;font-size:19px"><span>Onde fica a hamburgueria?</span><span class="plus fd" style="font-size:22px;color:{{cta}}">+</span></summary>
+        <div style="padding:0 26px 24px;color:#d9cbe9;font-size:17px;line-height:1.6">[ENDEREÇO / CIDADE]. A localização completa vai pra quem entrar na lista.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section style="position:relative;max-width:1200px;margin:0 auto;padding:0 24px 120px;box-sizing:border-box">
+    <div class="reveal" style="padding:3px;border-radius:18px;background:conic-gradient(from var(--a),#9a35e0,#c9ff2f,#ff2fb3,#9a35e0);animation:spinA 6s linear infinite;box-shadow:0 0 90px rgba(154,53,224,.5)">
+      <div style="position:relative;overflow:hidden;box-sizing:border-box;background:#110b1a;border-radius:15px;padding:96px 32px;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center">
+        <div aria-hidden="true" style="position:absolute;top:-200px;left:50%;margin-left:-320px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(154,53,224,.55),transparent 65%);filter:blur(50px);animation:orb 14s ease-in-out infinite"></div>
+        <svg style="position:relative" width="56" height="48" viewBox="0 0 7 6" shape-rendering="crispEdges" fill="{{cta}}" aria-hidden="true"><path d="M1 0h2v1H1z M4 0h2v1H4z M0 1h7v2H0z M1 3h5v1H1z M2 4h3v1H2z M3 5h1v1H3z"></path></svg>
+        <h2 class="fd" style="position:relative;margin:0;font-size:clamp(30px,5vw,68px);line-height:1.02;max-width:900px">Game over é pra quem <span class="neon" style="color:{{cta}}"><span class="glitch" data-text="não entra na lista">não entra na lista</span></span></h2>
+        <p style="position:relative;margin:0;font-size:20px;line-height:1.6;color:#d9cbe9;max-width:560px">Dá o respawn e apareça na frente quando a gente abrir. Seu cupom de abertura está esperando.</p>
+        <a class="btn fd" href="#lista" style="position:relative;background:{{cta}};color:#14102a;text-decoration:none;font-size:16px;padding:0 44px;min-height:64px;box-sizing:border-box;border-radius:10px;display:inline-flex;align-items:center;box-shadow:0 0 50px rgba(201,255,47,.4)"><span class="sh"></span>Quero entrar na lista</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer style="border-top:1px solid rgba(176,76,255,.35)">
+    <div style="max-width:1200px;margin:0 auto;padding:44px 24px 56px;box-sizing:border-box;display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+        <img src="./assets/1fb8d5465a155248c162dbe9370e9895.png" alt="Respawn Burguer's" style="height:68px;width:auto">
+        <div class="fh" style="display:flex;flex-wrap:wrap;gap:12px 32px;font-size:13px;color:#d9cbe9">
+          <span>[@INSTAGRAM]</span>
+          <span>[WHATSAPP]</span>
+          <span>[ENDEREÇO / CIDADE]</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.5;color:#b9a9cf">
+        <span>© 2026 Respawn Burguer's. Todos os direitos reservados.</span>
+        <span>Seus dados são usados apenas para enviar avisos da Respawn Burguer's, conforme a LGPD.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"cta":{"editor":"color","default":"#c9ff2f","options":["#c9ff2f","#3df2d0","#ffb020","#ffffff"],"section":"Cores"},"$preview":{"width":1360,"height":7800}}'>
+class Component extends DCLogic {
+  state = { name: '', phone: '', email: '', done: false };
+
+  renderVals() {
+    return {
+      cta: this.props.cta ?? '#c9ff2f',
+      name: this.state.name,
+      phone: this.state.phone,
+      email: this.state.email,
+      done: this.state.done,
+      notDone: !this.state.done,
+      onName: (e) => this.setState({ name: e.target.value }),
+      onPhone: (e) => this.setState({ phone: e.target.value }),
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      submit: (e) => {
+        e.preventDefault();
+        this.setState({ done: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
